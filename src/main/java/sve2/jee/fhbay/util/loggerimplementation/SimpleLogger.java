@@ -6,7 +6,7 @@ import sve2.jee.fhbay.util.LoggerType;
 
 import javax.enterprise.context.Dependent;
 
-@Dependent
+@Dependent // this bean has the same lifecycle as its parent bean
 @LoggerQualifier(type = LoggerType.SIMPLE)
 public class SimpleLogger implements Logger {
     @Override

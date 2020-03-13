@@ -1,0 +1,20 @@
+> curl -X GET -i http://localhost:8080/fhbay/api/customers
+< 09:48:24,874 INFO  [sve2.jee.fhbay.bl.ejb.implementation.CustomerAdminBean] (default task-2) findAllCustomers() called
+< 09:48:24,875 INFO  [org.hibernate.hql.internal.QueryTranslatorFactoryInitiator] (default task-2) HHH000397: Using ASTQueryTranslatorFactory
+
+> curl -X GET -i http://localhost:8080/fhbay/api/customers/1
+< 09:49:02,769 INFO  [sve2.jee.fhbay.bl.ejb.implementation.CustomerAdminBean] (default task-2) existsCustomer(id = 1) called
+< 09:49:02,772 INFO  [sve2.jee.fhbay.bl.ejb.implementation.CustomerAdminBean] (default task-2) findCustomerById(id = 1) called
+
+> curl -X POST -i http://localhost:8080/fhbay/api/customers/create -H "Content-Type: application/json" --data '{"email":"marge.simpson@burnspowerplant.com","firstName":"Marge","lastName":"Simpson","password":"Homer","username":"marge.simpson"}'
+< 09:51:36,022 INFO  [sve2.jee.fhbay.bl.ejb.implementation.CustomerAdminBean] (default task-2) saveCustomer(customer = 'Customer{id=null, firstName='Marge', lastName='Simpson', username='marge.simpson', password='Homer', email='marge.simpson@burnspowerplant.com'}') called
+
+> curl -X PUT -i http://localhost:8080/fhbay/api/customers/update/3 -H "Content-Type: application/json" --data '{"email":"marge.simpson@burnspowerplant.com","firstName":"Marge","id":6,"lastName":"Simpson","password":"ILoveHomerSimpson","username":"marge.simpson"}'
+< 09:52:31,971 INFO  [sve2.jee.fhbay.bl.ejb.implementation.CustomerAdminBean] (default task-2) saveCustomer(customer = 'Customer{id=6, firstName='Marge', lastName='Simpson', username='marge.simpson', password='ILoveHomerSimpson', email='marge.simpson@burnspowerplant.com'}') called
+
+> curl -X POST -i http://localhost:8080/fhbay/api/customers/init
+< 09:48:19,710 INFO  [sve2.jee.fhbay.bl.ejb.implementation.CustomerAdminBean] (default task-2) saveCustomer(customer = 'Customer{id=-1, firstName='Homer', lastName='Simpson', username='homer.simpson', password='Donuts', email='homer.simpson@burnspowerplant.com'}') called
+> 09:48:19,737 INFO  [sve2.jee.fhbay.bl.ejb.implementation.CustomerAdminBean] (default task-2) saveCustomer(customer = 'Customer{id=-1, firstName='Lenford', lastName='Leonard', username='lenford.leonard', password='Carl', email='lenford.leonard@burnspowerplant.com'}') called
+> 09:48:19,740 INFO  [sve2.jee.fhbay.bl.ejb.implementation.CustomerAdminBean] (default task-2) saveCustomer(customer = 'Customer{id=-1, firstName='Carl', lastName='Carlson', username='carl.carlson', password='Lenny', email='carl.carlson@burnspowerplant.com'}') called
+> 09:48:19,743 INFO  [sve2.jee.fhbay.bl.ejb.implementation.CustomerAdminBean] (default task-2) saveCustomer(customer = 'Customer{id=-1, firstName='Charles Montgomery', lastName='Burns', username='burns', password='Money', email='burns@burnspowerplant.com'}') called
+> 09:48:19,746 INFO  [sve2.jee.fhbay.bl.ejb.implementation.CustomerAdminBean] (default task-2) saveCustomer(customer = 'Customer{id=-1, firstName='Waylon Jr', lastName='Smithers', username='waylon.jr.smithers', password='MrBurns', email='waylon.jr.smithers@burnspowerplant.com'}') called
