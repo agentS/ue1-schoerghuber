@@ -20,13 +20,13 @@ public class Customer implements Serializable {
     @Column
     private String lastName;
 
-    @Column
+    @Column(nullable = false)
     private String username;
 
-    @Column
+    @Column(nullable = false)
     private String password;
 
-    @Column
+    @Column(nullable = false)
     private String email;
 
     public Customer() {

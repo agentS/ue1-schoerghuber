@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface CustomerAdmin {
     boolean existsCustomer(Long id);
-    Customer findCustomerById(Long id) throws IdNotFoundException;
+    Customer findCustomerById(Long id) throws IdNotFoundException; // a checked exception is part of the contract --> in case of an exception the transaction is still committed
     List<Customer> findAllCustomers();
     Long saveCustomer(Customer customer);
 }

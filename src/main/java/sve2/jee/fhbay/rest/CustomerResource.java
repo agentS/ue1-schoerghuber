@@ -32,13 +32,9 @@ public class CustomerResource {
     @Path("/{customerId}")
     @Produces(MediaType.APPLICATION_JSON)
     public Customer findCustomerById(@PathParam("customerId") Long customerId) {
-        if (this.customerAdmin.existsCustomer(customerId)) {
-            try {
-                return this.customerAdmin.findCustomerById(customerId);
-            } catch (IdNotFoundException customerNotFoundException) {
-                throw new NotFoundException("Customer with ID " + customerId + " does not exist!");
-            }
-        } else {
+        try {
+            return this.customerAdmin.findCustomerById(customerId);
+        } catch (IdNotFoundException customerNotFoundException) {
             throw new NotFoundException("Customer with ID " + customerId + " does not exist!");
         }
     }

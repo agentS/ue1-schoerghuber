@@ -12,7 +12,7 @@ import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
 
-@Stateless
+@Stateless // a stateless session bean is transactional by default, so no need for the @Transactional annotation with EJB
 public class CustomerAdminBean implements CustomerAdmin {
     @Inject
     private Logger logger;
