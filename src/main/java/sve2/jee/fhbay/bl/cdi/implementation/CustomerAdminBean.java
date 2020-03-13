@@ -3,7 +3,7 @@ package sve2.jee.fhbay.bl.cdi.implementation;
 import org.slf4j.Logger;
 import sve2.jee.fhbay.bl.cdi.CustomerAdmin;
 import sve2.jee.fhbay.bl.cdi.IdNotFoundException;
-import sve2.jee.fhbay.dao.ejb.SimpleCustomerDao;
+import sve2.jee.fhbay.dao.cdi.SimpleCustomerDao;
 import sve2.jee.fhbay.domain.Customer;
 
 import javax.enterprise.context.RequestScoped;
