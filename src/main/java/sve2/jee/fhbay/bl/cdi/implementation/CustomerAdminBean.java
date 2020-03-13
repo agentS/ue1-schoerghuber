@@ -3,6 +3,7 @@ package sve2.jee.fhbay.bl.cdi.implementation;
 import org.slf4j.Logger;
 import sve2.jee.fhbay.bl.cdi.CustomerAdmin;
 import sve2.jee.fhbay.bl.cdi.IdNotFoundException;
+import sve2.jee.fhbay.dao.cdi.CustomerDao;
 import sve2.jee.fhbay.dao.cdi.SimpleCustomerDao;
 import sve2.jee.fhbay.domain.Customer;
 
@@ -17,8 +18,11 @@ public class CustomerAdminBean implements CustomerAdmin {
     @Inject
     private Logger logger;
 
+    //@Inject
+    //private SimpleCustomerDao customerDao;
+
     @Inject
-    private SimpleCustomerDao customerDao;
+    private CustomerDao customerDao;
 
     @Override
     public boolean existsCustomer(Long id) {

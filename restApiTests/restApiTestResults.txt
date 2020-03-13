@@ -9,7 +9,7 @@
 > curl -X POST -i http://localhost:8080/fhbay/api/customers/create -H "Content-Type: application/json" --data '{"email":"marge.simpson@burnspowerplant.com","firstName":"Marge","lastName":"Simpson","password":"Homer","username":"marge.simpson"}'
 < 09:51:36,022 INFO  [sve2.jee.fhbay.bl.ejb.implementation.CustomerAdminBean] (default task-2) saveCustomer(customer = 'Customer{id=null, firstName='Marge', lastName='Simpson', username='marge.simpson', password='Homer', email='marge.simpson@burnspowerplant.com'}') called
 
-> curl -X PUT -i http://localhost:8080/fhbay/api/customers/update/3 -H "Content-Type: application/json" --data '{"email":"marge.simpson@burnspowerplant.com","firstName":"Marge","id":6,"lastName":"Simpson","password":"ILoveHomerSimpson","username":"marge.simpson"}'
+> curl -X PUT -i http://localhost:8080/fhbay/api/customers/update/6 -H "Content-Type: application/json" --data '{"email":"marge.simpson@burnspowerplant.com","firstName":"Marge","id":6,"lastName":"Simpson","password":"ILoveHomerSimpson","username":"marge.simpson"}'
 < 09:52:31,971 INFO  [sve2.jee.fhbay.bl.ejb.implementation.CustomerAdminBean] (default task-2) saveCustomer(customer = 'Customer{id=6, firstName='Marge', lastName='Simpson', username='marge.simpson', password='ILoveHomerSimpson', email='marge.simpson@burnspowerplant.com'}') called
 
 > curl -X POST -i http://localhost:8080/fhbay/api/customers/init
