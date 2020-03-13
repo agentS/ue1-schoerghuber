@@ -1,10 +1,13 @@
 package sve2.jee.fhbay.rest;
 
-import sve2.jee.fhbay.bl.ejb.CustomerAdmin;
-import sve2.jee.fhbay.bl.ejb.IdNotFoundException;
+import sve2.jee.fhbay.bl.cdi.CustomerAdmin;
+import sve2.jee.fhbay.bl.cdi.IdNotFoundException;
+//import sve2.jee.fhbay.bl.ejb.CustomerAdmin;
+//import sve2.jee.fhbay.bl.ejb.IdNotFoundException;
 import sve2.jee.fhbay.domain.Customer;
 
-import javax.ejb.EJB;
+//import javax.ejb.EJB;
+import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
@@ -12,8 +15,11 @@ import java.util.Objects;
 
 @Path("/customers")
 public class CustomerResource {
-    @EJB
+    @Inject
     private CustomerAdmin customerAdmin;
+
+    //@EJB
+    //private CustomerAdmin customerAdmin;
 
     @GET
     @Path("/")

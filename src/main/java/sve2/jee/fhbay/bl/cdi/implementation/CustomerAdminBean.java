@@ -1,23 +1,23 @@
-package sve2.jee.fhbay.bl.ejb.implementation;
+package sve2.jee.fhbay.bl.cdi.implementation;
 
 import org.slf4j.Logger;
-import sve2.jee.fhbay.bl.ejb.CustomerAdmin;
-import sve2.jee.fhbay.bl.ejb.IdNotFoundException;
+import sve2.jee.fhbay.bl.cdi.CustomerAdmin;
+import sve2.jee.fhbay.bl.cdi.IdNotFoundException;
 import sve2.jee.fhbay.dao.ejb.SimpleCustomerDao;
 import sve2.jee.fhbay.domain.Customer;
 
-import javax.ejb.EJB;
-import javax.ejb.Stateless;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import java.util.ArrayList;
+import javax.transaction.Transactional;
 import java.util.List;
 
-@Stateless
+@RequestScoped
+@Transactional
 public class CustomerAdminBean implements CustomerAdmin {
     @Inject
     private Logger logger;
 
-    @EJB
+    @Inject
     private SimpleCustomerDao customerDao;
 
     @Override

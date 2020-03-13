@@ -1,4 +1,4 @@
-package sve2.jee.fhbay.bl.ejb;
+package sve2.jee.fhbay.bl.cdi;
 
 public class IdNotFoundException extends Exception {
     public IdNotFoundException() {
