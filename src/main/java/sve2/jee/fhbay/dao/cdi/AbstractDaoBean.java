@@ -11,59 +11,59 @@ import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 public abstract class AbstractDaoBean<T, ID extends Serializable> implements Dao<T, ID> {
-  @PersistenceContext
-  private EntityManager entityManager;
+    @PersistenceContext
+    private EntityManager entityManager;
 
-  private Class<T> entityType;
+    private Class<T> entityType;
 
-  public AbstractDaoBean() {
-    ParameterizedType type = TypeUtil.getTypeInfoOfGenericBaseclass(this.getClass(), AbstractDaoBean.class);
-    this.entityType = (Class<T>)(type.getActualTypeArguments()[0]);
-  }
-
-  protected EntityManager getEntityManager() {
-    if (this.entityManager == null) {
-      throw new IllegalStateException("EntityManager has not been set on DAO before usage");
+    public AbstractDaoBean() {
+        ParameterizedType type = TypeUtil.getTypeInfoOfGenericBaseclass(this.getClass(), AbstractDaoBean.class);
+        this.entityType = (Class<T>)(type.getActualTypeArguments()[0]);
     }
-    return this.entityManager;
-  }
 
-  public Class<T> getEntityBeanType() {
-    return this.entityType;
-  }
+    protected EntityManager getEntityManager() {
+        if (this.entityManager == null) {
+            throw new IllegalStateException("EntityManager has not been set on DAO before usage");
+        }
+        return this.entityManager;
+    }
 
-  @Override
-  public T findById(ID id) {
-    T entity = this.getEntityManager().find(this.getEntityBeanType(), id);
-    return entity;
-  }
+    public Class<T> getEntityBeanType() {
+        return this.entityType;
+    }
 
-  @Override
-  public boolean entityExists(ID id) {
-    return this.getEntityManager().find(this.getEntityBeanType(), id) != null;
-  }
+    @Override
+    public T findById(ID id) {
+        T entity = this.getEntityManager().find(this.getEntityBeanType(), id);
+        return entity;
+    }
 
-  @Override
-  public List<T> findAll() {
-    TypedQuery<T> selectAllQuery = this.entityManager.createQuery(
-            String.format("select entity from %s entity", this.getEntityBeanType().getName()),
-            this.getEntityBeanType()
-    );
-    return selectAllQuery.getResultList();
-  }
+    @Override
+    public boolean entityExists(ID id) {
+        return this.getEntityManager().find(this.getEntityBeanType(), id) != null;
+    }
 
-  @Override
-  public T merge(T entity) {
-    return this.getEntityManager().merge(entity);
-  }
+    @Override
+    public List<T> findAll() {
+        TypedQuery<T> selectAllQuery = this.entityManager.createQuery(
+                String.format("select entity from %s entity", this.getEntityBeanType().getName()),
+                this.getEntityBeanType()
+        );
+        return selectAllQuery.getResultList();
+    }
 
-  @Override
-  public void persist(T entity) {
-    this.getEntityManager().persist(entity);
-  }
+    @Override
+    public T merge(T entity) {
+        return this.getEntityManager().merge(entity);
+    }
 
-  @Override
-  public void remove(T entity) {
-    this.getEntityManager().remove(entity);
-  }
+    @Override
+    public void persist(T entity) {
+        this.getEntityManager().persist(entity);
+    }
+
+    @Override
+    public void remove(T entity) {
+        this.getEntityManager().remove(entity);
+    }
 }
